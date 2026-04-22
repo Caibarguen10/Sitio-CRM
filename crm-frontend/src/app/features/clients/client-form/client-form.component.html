@@ -1,0 +1,60 @@
+<div class="form-container">
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>{{ pageTitle }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre Completo</mat-label>
+          <input matInput formControlName="fullName" placeholder="Ingrese el nombre completo">
+          <mat-error *ngIf="clientForm.get('fullName')?.invalid">
+            {{ getErrorMessage('fullName') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Número de Documento</mat-label>
+          <input matInput formControlName="documentNumber" appNumbersOnly placeholder="Cédula, NIT o documento">
+          <mat-hint>Solo números - C.C.: 10 dígitos | C.E.: 6-7 dígitos | NIT: 9 dígitos</mat-hint>
+          <mat-error *ngIf="clientForm.get('documentNumber')?.invalid">
+            {{ getErrorMessage('documentNumber') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="ejemplo@correo.com">
+          <mat-error *ngIf="clientForm.get('email')?.invalid">
+            {{ getErrorMessage('email') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Teléfono</mat-label>
+          <input matInput type="tel" formControlName="phone" appPhoneMask placeholder="300 123 4567">
+          <mat-hint>Solo números - Local: 300 123 4567 o 123 4567 | Internacional: +código+número</mat-hint>
+          <mat-error *ngIf="clientForm.get('phone')?.invalid">
+            {{ getErrorMessage('phone') }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Dirección</mat-label>
+          <textarea matInput formControlName="address" rows="3" placeholder="Dirección completa"></textarea>
+        </mat-form-field>
+
+        <div class="button-group">
+          <button mat-raised-button type="button" (click)="onCancel()" [disabled]="loading">
+            Cancelar
+          </button>
+          <button mat-raised-button color="primary" type="submit" 
+                  [disabled]="clientForm.invalid || loading">
+            <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+            <span *ngIf="!loading">{{ isEditMode ? 'Actualizar' : 'Guardar' }}</span>
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
