@@ -1,16 +1,106 @@
-# React + Vite
+# SitioCRM - CRM Web Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive Customer Relationship Management (CRM) application built with React, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Dashboard
+- **KPI Cards**: Quick overview of total contacts, active deals, monthly revenue, and pending tasks with trend indicators
+- **Recent Deals Table**: Display of latest deals with stages and values
+- **Activity Feed**: Real-time updates on business activities
 
-## React Compiler
+### Contacts Management
+- View all contacts with search functionality
+- Add new contacts with modal form
+- Edit contact information
+- Delete contacts
+- Filter by status (Activo, Inactivo, Prospecto)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Deals Pipeline
+- **Kanban Board**: 5-stage pipeline (Prospecto → Calificado → Propuesta → Negociación → Cerrado)
+- Visual representation of deals at each stage
+- Total value calculation per stage
+- Quick deal overview with client and revenue information
 
-## Expanding the ESLint configuration
+### Activities & Tasks
+- Create and manage tasks with priority levels (Alta, Media, Baja)
+- Mark tasks as complete/incomplete
+- Filter by status (Todas, Pendientes, Completadas)
+- Set due dates for follow-ups
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Reports & Analytics
+- **Revenue Charts**: Monthly revenue trends visualization
+- **Deal Distribution**: Pipeline stage breakdown
+- **Team Performance**: Individual sales metrics including close rates
+
+## Tech Stack
+
+- **React 18**: Modern UI library
+- **Vite**: Lightning-fast build tool
+- **React Router v6**: Client-side routing
+- **Tailwind CSS**: Utility-first CSS framework
+- **Lucide React**: Beautiful SVG icons
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+Opens at `http://localhost:5173`
+
+### Build
+
+```bash
+npm run build
+```
+
+Generates optimized production build in `dist/` directory.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Layout.jsx      # Main layout with sidebar and header
+│   ├── Sidebar.jsx     # Navigation sidebar
+│   └── Header.jsx      # Top header with search and user profile
+├── pages/
+│   ├── Dashboard.jsx   # Dashboard with KPIs and recent activity
+│   ├── Contacts.jsx    # Contacts management
+│   ├── Deals.jsx       # Deals kanban board
+│   ├── Activities.jsx  # Task management
+│   └── Reports.jsx     # Analytics and reports
+├── App.jsx             # Main app with routing
+├── main.jsx            # React entry point
+└── index.css           # Tailwind CSS styles
+```
+
+## Features
+
+✅ Fully functional mock data (no API calls)
+✅ Responsive design for all screen sizes
+✅ Dark-mode compatible styling foundation
+✅ Modular component architecture
+✅ Client-side state management with React hooks
+✅ Clean, professional UI with Tailwind CSS
+
+## Notes
+
+- All data is currently hardcoded for demonstration purposes
+- No backend API integration required
+- Ready to be connected to a REST/GraphQL backend
