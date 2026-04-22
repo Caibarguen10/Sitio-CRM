@@ -40,5 +40,10 @@ export const routes: Routes = [
     path: 'clients/:id/edit', 
     loadComponent: () => import('./features/clients/client-form/client-form.component').then(m => m.ClientFormComponent),
     canActivate: [authGuard]
+  },
+  { 
+    path: 'clients/:id', 
+    loadComponent: () => import('./features/clients/client-detail/client-detail.component').then(m => m.ClientDetailComponent),
+    canActivate: [authGuard]
   }
 ];

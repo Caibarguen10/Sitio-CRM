@@ -1,0 +1,187 @@
+<div class="client-detail-container" *ngIf="!loading && client">
+  <!-- Header con información básica -->
+  <mat-card class="header-card">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="title-section">
+          <mat-icon>person</mat-icon>
+          <h1>{{ client.name }}</h1>
+        </div>
+      </mat-card-title>
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" (click)="editClient()">
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteClient()">
+          <mat-icon>delete</mat-icon>
+          Eliminar
+        </button>
+        <button mat-button (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+          Volver
+        </button>
+      </div>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <div class="client-info-grid">
+        <div class="info-item">
+          <mat-icon>badge</mat-icon>
+          <div>
+            <span class="label">Documento</span>
+            <span class="value">{{ client.documentNumber }}</span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <mat-icon>email</mat-icon>
+          <div>
+            <span class="label">Email</span>
+            <span class="value">{{ client.email }}</span>
+          </div>
+        </div>
+        
+        <div class="info-item" *ngIf="client.phone">
+          <mat-icon>phone</mat-icon>
+          <div>
+            <span class="label">Teléfono</span>
+            <span class="value">{{ client.phone }}</span>
+          </div>
+        </div>
+        
+        <div class="info-item" *ngIf="client.address">
+          <mat-icon>location_on</mat-icon>
+          <div>
+            <span class="label">Dirección</span>
+            <span class="value">{{ client.address }}</span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <mat-icon>calendar_today</mat-icon>
+          <div>
+            <span class="label">Fecha de Registro</span>
+            <span class="value">{{ formatDate(client.createdAt) }}</span>
+          </div>
+        </div>
+        
+        <div class="info-item">
+          <mat-icon>person_outline</mat-icon>
+          <div>
+            <span class="label">Creado por</span>
+            <span class="value">{{ client.createdBy }}</span>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Tabs con información detallada -->
+  <mat-tab-group class="details-tabs">
+    <!-- Tab de Contactos -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">contacts</mat-icon>
+        Contactos ({{ contacts.length }})
+      </ng-template>
+      
+      <div class="tab-content">
+        <mat-card *ngIf="contacts.length === 0" class="empty-state">
+          <mat-icon>contacts</mat-icon>
+          <p>No hay contactos registrados para este cliente</p>
+        </mat-card>
+
+        <mat-card *ngFor="let contact of contacts" class="contact-card">
+          <mat-card-header>
+            <mat-card-title>{{ contact.name }}</mat-card-title>
+            <mat-card-subtitle *ngIf="contact.position">{{ contact.position }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="contact-info">
+              <div class="contact-detail">
+                <mat-icon>email</mat-icon>
+                <span>{{ contact.email }}</span>
+              </div>
+              <div class="contact-detail" *ngIf="contact.phone">
+                <mat-icon>phone</mat-icon>
+                <span>{{ contact.phone }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <!-- Tab de Notas -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">note</mat-icon>
+        Notas ({{ notes.length }})
+      </ng-template>
+      
+      <div class="tab-content">
+        <mat-card *ngIf="notes.length === 0" class="empty-state">
+          <mat-icon>note</mat-icon>
+          <p>No hay notas registradas para este cliente</p>
+        </mat-card>
+
+        <mat-card *ngFor="let note of notes" class="note-card">
+          <mat-card-header>
+            <mat-card-subtitle>
+              {{ formatDate(note.createdAt) }} • {{ note.createdBy }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="note-content">{{ note.content }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <!-- Tab de Oportunidades -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">trending_up</mat-icon>
+        Oportunidades ({{ opportunities.length }})
+      </ng-template>
+      
+      <div class="tab-content">
+        <mat-card *ngIf="opportunities.length === 0" class="empty-state">
+          <mat-icon>trending_up</mat-icon>
+          <p>No hay oportunidades registradas para este cliente</p>
+        </mat-card>
+
+        <mat-card *ngFor="let opportunity of opportunities" class="opportunity-card">
+          <mat-card-header>
+            <mat-card-title>{{ opportunity.title }}</mat-card-title>
+            <mat-chip [color]="getOpportunityStatusColor(opportunity.status)" highlighted>
+              {{ getOpportunityStatusLabel(opportunity.status) }}
+            </mat-chip>
+          </mat-card-header>
+          <mat-card-content>
+            <p *ngIf="opportunity.description" class="opportunity-description">
+              {{ opportunity.description }}
+            </p>
+            <div class="opportunity-footer">
+              <div class="amount">
+                <mat-icon>attach_money</mat-icon>
+                <strong>{{ formatCurrency(opportunity.amount) }}</strong>
+              </div>
+              <div class="date">
+                <mat-icon>calendar_today</mat-icon>
+                <span>{{ formatDate(opportunity.createdAt) }}</span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<!-- Loading spinner -->
+<div class="loading-container" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+  <p>Cargando información del cliente...</p>
+</div>
