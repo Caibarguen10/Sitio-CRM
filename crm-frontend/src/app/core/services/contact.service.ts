@@ -20,9 +20,4 @@ export class ContactService {
   createContact(contact: CreateContactDto): Observable<ApiResponse<number>> {
     return this.http.post<ApiResponse<number>>(this.apiUrl, contact);
   }
-
-  // DELETE no está disponible en el backend actual
-  // deleteContact(id: number): Observable<any> {
-  //   return this.http.delete(`${this.apiUrl}/${id}`);
-  // }
 }
