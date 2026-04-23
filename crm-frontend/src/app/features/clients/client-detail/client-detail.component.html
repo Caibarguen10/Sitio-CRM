@@ -121,20 +121,11 @@
       </ng-template>
       
       <div class="tab-content">
-        <mat-card *ngIf="notes.length === 0" class="empty-state">
+        <mat-card class="empty-state">
           <mat-icon>note</mat-icon>
-          <p>No hay notas registradas para este cliente</p>
-        </mat-card>
-
-        <mat-card *ngFor="let note of notes" class="note-card">
-          <mat-card-header>
-            <mat-card-subtitle>
-              {{ formatDate(note.createdAt) }} • {{ note.createdBy }}
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="note-content">{{ note.note }}</p>
-          </mat-card-content>
+          <p><strong>Funcionalidad no disponible</strong></p>
+          <p>El backend no tiene el endpoint GET para listar notas por cliente.</p>
+          <p style="font-size: 12px; color: rgba(0,0,0,0.4);">Solo está disponible POST /api/notes para crear notas.</p>
         </mat-card>
       </div>
     </mat-tab>
@@ -147,33 +138,11 @@
       </ng-template>
       
       <div class="tab-content">
-        <mat-card *ngIf="opportunities.length === 0" class="empty-state">
+        <mat-card class="empty-state">
           <mat-icon>trending_up</mat-icon>
-          <p>No hay oportunidades registradas para este cliente</p>
-        </mat-card>
-
-        <mat-card *ngFor="let opportunity of opportunities" class="opportunity-card">
-          <mat-card-header>
-            <mat-card-title>{{ opportunity.title }}</mat-card-title>
-            <mat-chip [color]="getOpportunityStatusColor(opportunity.status)" highlighted>
-              {{ getOpportunityStatusLabel(opportunity.status) }}
-            </mat-chip>
-          </mat-card-header>
-          <mat-card-content>
-            <p *ngIf="opportunity.description" class="opportunity-description">
-              {{ opportunity.description }}
-            </p>
-            <div class="opportunity-footer">
-              <div class="amount">
-                <mat-icon>attach_money</mat-icon>
-                <strong>{{ formatCurrency(opportunity.estimatedAmount) }}</strong>
-              </div>
-              <div class="date">
-                <mat-icon>calendar_today</mat-icon>
-                <span>{{ formatDate(opportunity.createdAt) }}</span>
-              </div>
-            </div>
-          </mat-card-content>
+          <p><strong>Funcionalidad no disponible</strong></p>
+          <p>El backend no tiene el endpoint GET para listar oportunidades por cliente.</p>
+          <p style="font-size: 12px; color: rgba(0,0,0,0.4);">Solo está disponible POST /api/opportunities para crear oportunidades.</p>
         </mat-card>
       </div>
     </mat-tab>

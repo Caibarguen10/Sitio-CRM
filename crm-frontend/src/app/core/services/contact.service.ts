@@ -21,7 +21,8 @@ export class ContactService {
     return this.http.post<ApiResponse<number>>(this.apiUrl, contact);
   }
 
-  deleteContact(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
+  // DELETE no está disponible en el backend actual
+  // deleteContact(id: number): Observable<any> {
+  //   return this.http.delete(`${this.apiUrl}/${id}`);
+  // }
 }

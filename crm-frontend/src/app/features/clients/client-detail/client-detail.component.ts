@@ -87,43 +87,20 @@ export class ClientDetailComponent implements OnInit {
   loadContactos(): void {
     this.contactService.getContactsByClient(this.clientId).subscribe({
       next: (response) => {
+        this.loading = false;
         if (response.success) {
           this.contacts = response.data;
         }
-        this.loadNotas();
-      },
-      error: () => {
-        this.loadNotas();
-      }
-    });
-  }
-
-  loadNotas(): void {
-    this.noteService.getNotesByClient(this.clientId).subscribe({
-      next: (response) => {
-        if (response.success) {
-          this.notes = response.data;
-        }
-        this.loadOportunidades();
-      },
-      error: () => {
-        this.loadOportunidades();
-      }
-    });
-  }
-
-  loadOportunidades(): void {
-    this.opportunityService.getOpportunitiesByClient(this.clientId).subscribe({
-      next: (response) => {
-        this.loading = false;
-        if (response.success) {
-          this.opportunities = response.data;
-        }
       },
       error: () => {
         this.loading = false;
       }
     });
+    
+    // Notas y Oportunidades: endpoints GET por cliente no están disponibles en el backend actual
+    // Solo se puede crear (POST), pero no listar por cliente
+    this.notes = [];
+    this.opportunities = [];
   }
 
   editClient(): void {

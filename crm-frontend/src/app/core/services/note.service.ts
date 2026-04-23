@@ -13,15 +13,17 @@ export class NoteService {
 
   constructor(private http: HttpClient) {}
 
-  getNotesByClient(clientId: number): Observable<ApiResponse<Note[]>> {
-    return this.http.get<ApiResponse<Note[]>>(`${this.apiUrl}/client/${clientId}`);
-  }
+  // GET /api/notes/client/{clientId} NO existe en el backend
+  // getNotesByClient(clientId: number): Observable<ApiResponse<Note[]>> {
+  //   return this.http.get<ApiResponse<Note[]>>(`${this.apiUrl}/client/${clientId}`);
+  // }
 
   createNote(note: CreateNoteDto): Observable<ApiResponse<number>> {
     return this.http.post<ApiResponse<number>>(this.apiUrl, note);
   }
 
-  deleteNote(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
+  // DELETE no está disponible en el backend actual
+  // deleteNote(id: number): Observable<any> {
+  //   return this.http.delete(`${this.apiUrl}/${id}`);
+  // }
 }

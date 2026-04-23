@@ -13,15 +13,17 @@ export class OpportunityService {
 
   constructor(private http: HttpClient) {}
 
-  getOpportunitiesByClient(clientId: number): Observable<ApiResponse<Opportunity[]>> {
-    return this.http.get<ApiResponse<Opportunity[]>>(`${this.apiUrl}/client/${clientId}`);
-  }
+  // GET /api/opportunities/client/{clientId} NO existe en el backend
+  // getOpportunitiesByClient(clientId: number): Observable<ApiResponse<Opportunity[]>> {
+  //   return this.http.get<ApiResponse<Opportunity[]>>(`${this.apiUrl}/client/${clientId}`);
+  // }
 
   createOpportunity(opportunity: CreateOpportunityDto): Observable<ApiResponse<number>> {
     return this.http.post<ApiResponse<number>>(this.apiUrl, opportunity);
   }
 
-  deleteOpportunity(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
+  // DELETE no está disponible en el backend actual
+  // deleteOpportunity(id: number): Observable<any> {
+  //   return this.http.delete(`${this.apiUrl}/${id}`);
+  // }
 }
