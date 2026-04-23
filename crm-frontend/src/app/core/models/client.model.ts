@@ -1,10 +1,9 @@
 export interface Client {
   id: number;
-  fullName: string;  // Backend usa "fullName" según Swagger
+  fullName: string;
   documentNumber: string;
   email: string;
-  phone?: string;
-  address?: string;
+  phone: string;  // Requerido en backend
   createdAt: string;
   createdBy: string;
 }

@@ -50,8 +50,7 @@ export class ClientFormComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(3)]],
       documentNumber: ['', [Validators.required, documentNumberValidator()]],
       email: ['', [Validators.required, emailValidator()]],
-      phone: ['', [phoneValidator()]],
-      address: ['']
+      phone: ['', [Validators.required, phoneValidator()]]  // Requerido en backend
     });
   }
 

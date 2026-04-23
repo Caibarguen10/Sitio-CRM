@@ -1,8 +1,7 @@
 export interface Opportunity {
   id: number;
   title: string;
-  description?: string;
-  estimatedAmount: number;  // Backend usa "estimatedAmount" no "amount"
+  estimatedAmount: number;
   status: OpportunityStatus;
   clientId: number;
   createdAt: string;
@@ -20,8 +19,7 @@ export enum OpportunityStatus {
 
 export interface CreateOpportunityDto {
   title: string;
-  description?: string;
-  estimatedAmount: number;  // Backend usa "estimatedAmount" no "amount"
+  estimatedAmount: number;
   status: OpportunityStatus;
   clientId: number;
 }
