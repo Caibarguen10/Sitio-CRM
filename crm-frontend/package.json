@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "dev": "ng serve",
     "build": "ng build",
+    "build:ssr": "ng build && ng run crm-frontend:server",
+    "start": "node dist/crm-frontend/server/server.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:crm-frontend": "node dist/crm-frontend/server/server.mjs"
