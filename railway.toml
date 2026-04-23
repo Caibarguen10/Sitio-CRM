@@ -1,0 +1,8 @@
+[build]
+builder = "NIXPACKS"
+buildCommand = "cd crm-frontend && npm install && npm run build:ssr"
+
+[deploy]
+startCommand = "cd crm-frontend && npm start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
