@@ -1,12 +1,12 @@
 export interface Note {
   id: number;
-  content: string;
+  note: string;  // Backend usa "note" no "content"
   clientId: number;
   createdAt: string;
   createdBy: string;
 }
 
 export interface CreateNoteDto {
-  content: string;
+  note: string;  // Backend usa "note" no "content"
   clientId: number;
 }

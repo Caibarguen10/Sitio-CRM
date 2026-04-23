@@ -7,9 +7,9 @@
       <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Nombre Completo</mat-label>
-          <input matInput formControlName="name" placeholder="Ingrese el nombre completo">
-          <mat-error *ngIf="clientForm.get('name')?.invalid">
-            {{ getErrorMessage('name') }}
+          <input matInput formControlName="fullName" placeholder="Ingrese el nombre completo">
+          <mat-error *ngIf="clientForm.get('fullName')?.invalid">
+            {{ getErrorMessage('fullName') }}
           </mat-error>
         </mat-form-field>
 

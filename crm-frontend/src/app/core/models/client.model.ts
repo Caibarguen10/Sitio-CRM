@@ -1,6 +1,6 @@
 export interface Client {
   id: number;
-  name: string;
+  fullName: string;  // Backend usa "fullName" según Swagger
   documentNumber: string;
   email: string;
   phone?: string;

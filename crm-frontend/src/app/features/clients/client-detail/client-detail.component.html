@@ -5,7 +5,7 @@
       <mat-card-title>
         <div class="title-section">
           <mat-icon>person</mat-icon>
-          <h1>{{ client.name }}</h1>
+          <h1>{{ client.fullName }}</h1>
         </div>
       </mat-card-title>
       <div class="action-buttons">
@@ -133,7 +133,7 @@
             </mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <p class="note-content">{{ note.content }}</p>
+            <p class="note-content">{{ note.note }}</p>
           </mat-card-content>
         </mat-card>
       </div>
@@ -166,7 +166,7 @@
             <div class="opportunity-footer">
               <div class="amount">
                 <mat-icon>attach_money</mat-icon>
-                <strong>{{ formatCurrency(opportunity.amount) }}</strong>
+                <strong>{{ formatCurrency(opportunity.estimatedAmount) }}</strong>
               </div>
               <div class="date">
                 <mat-icon>calendar_today</mat-icon>

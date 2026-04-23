@@ -47,7 +47,7 @@ export class ClientFormComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.clientForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      fullName: ['', [Validators.required, Validators.minLength(3)]],
       documentNumber: ['', [Validators.required, documentNumberValidator()]],
       email: ['', [Validators.required, emailValidator()]],
       phone: ['', [phoneValidator()]],
